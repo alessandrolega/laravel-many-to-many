@@ -46,9 +46,22 @@
         </select>
     </div>
 
+     {{-- CHECKBOX --}}
+
+     <div class="my-3">
+        <label  for="">Tags:</label>
+        @foreach ($tags as $tag)
+        <label class="px-3" for="">
+            <input class="form-check-input" type="checkbox" name="tags[]" value="{{$tag->id}}" {{$post->Tags->contains($tag) ? 
+            'checked' : ''}}>
+            {{$tag->name}}
+        </label>
+        @endforeach
+    </div>
+
     <button type="submit" class="btn btn-primary">Modifica Post</button>
 
-
+{{-- {{dd($post)}} --}}
 </form>
     
 @endsection
