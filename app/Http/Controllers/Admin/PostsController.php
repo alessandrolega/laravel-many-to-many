@@ -107,7 +107,7 @@ class PostsController extends Controller
        $singolo_post->update($data);
 
        if(array_key_exists('tags', $data)){
-        $singolo_post->Tags()->sync($data, ['tags']);
+        $singolo_post->Tags()->sync($data['tags']);
 
        } else{
             $singolo_post->Tags()->sync([]);
