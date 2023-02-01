@@ -4,7 +4,7 @@
     <h1>Crea un nuovo Post</h1>
 </div>
 
-<form action="{{route('admin.posts.store')}}" method="POST">
+<form action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="mb-3">
@@ -55,6 +55,13 @@
             {{$tag->name}}
         </label>
         @endforeach
+    </div>
+
+    {{-- INPUT FILE --}}
+    <div class="my-3">
+        <label for="">Aggiunta cover image</label>
+        <input type="file" name="image" class="form-control-file">
+
     </div>
 
     <button type="submit" class="btn btn-primary">Crea Nuovo Post</button>

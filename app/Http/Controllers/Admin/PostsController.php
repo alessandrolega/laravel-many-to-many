@@ -8,6 +8,8 @@ use App\Tag;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class PostsController extends Controller
 {
@@ -53,6 +55,10 @@ class PostsController extends Controller
             'body'=>'required'
         ]);
         $new_post = new Post();
+        if(array_key_exists('image', $data)){
+            $cover_url = Storage::put('posts_covers', $data['image']);
+            $data['cover'] = $cover_url;
+        }
         $new_post->fill($data);
         $new_post->save();
 
